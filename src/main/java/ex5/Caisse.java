@@ -4,55 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Caisse {
-
-    private String nom;
+    private Capacite capacite;
     private List<Item> items;
 
-    /**
-     * Constructeur
-     *
-     * @param nom
-     */
-    public Caisse(String nom) {
-        super();
-        this.nom = nom;
+    public Caisse(Capacite capacite) {
+        this.capacite = capacite;
         this.items = new ArrayList<>();
     }
 
-    /**
-     * Getter pour l'attribut nom
-     *
-     * @return the nom
-     */
-    public String getNom() {
-        return nom;
+    public boolean accepteItem(Item item) {
+        return item.getPoids() <= capacite.getPoidsMax();
     }
 
-    /**
-     * Setter pour l'attribut nom
-     *
-     * @param nom the nom to set
-     */
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void ajouterItem(Item item) {
+        items.add(item);
     }
 
-    /**
-     * Getter pour l'attribut items
-     *
-     * @return the items
-     */
     public List<Item> getItems() {
         return items;
     }
 
-    /**
-     * Setter pour l'attribut items
-     *
-     * @param items the items to set
-     */
+    public Capacite getCapacite() {
+        return capacite;
+    }
+
+    public void setCapacite(Capacite capacite) {
+        this.capacite = capacite;
+    }
+
     public void setItems(List<Item> items) {
         this.items = items;
     }
-
 }
